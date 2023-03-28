@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<script src="https://code.jquery.com/jquery-3.6.4.js"
+		integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+	<script src="../../ajaxcalls.js"></script>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="" />
+	<meta name="author" content="" />
+	<meta name="robots" content="" />
+
+	<meta name="description" content="Learn++ Course-X" />
+	<meta property="og:title" content="Learn++ Course-X" />
+	<meta property="og:description" content="Learn++ Course-X" />
+	<meta property="og:image" content="" />
+	<meta name="format-detection" content="telephone=no">
+
+	<link rel="icon" href="../error-404.html" type="image/x-icon" />
+	<link rel="shortcut icon" type="image/x-icon" href="../images/favicon.png" />
+
+	<title>Learn++ Course-X </title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" type="text/css" href="../css/assets.css">
+	<link rel="stylesheet" type="text/css" href="../vendors/calendar/fullcalendar.css">
+
+	<link rel="stylesheet" type="text/css" href="../css/typography.css">
+
+	<link rel="stylesheet" type="text/css" href="../css/shortcodes/shortcodes.css">
+
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/dashboard.css">
+	<link class="skin" rel="stylesheet" type="text/css" href="../css/color/color-1.css">
+	<style>
+		.card {
+			box-shadow: 4px 4px 5px 1px rgba(138, 119, 243, 0.2);
+			transition: transform 0.3s ease-in-out;
+			border-radius: 5px;
+			width: 200%;
+			/* height: auto; */
+			margin: 20px;
+			padding: 10px;
+			transition: transform 0.5s ease-in-out;
+			background-color: rgba(248, 51, 51, 0)
+		}
+
+		.card:hover {
+			box-shadow: 8px 8px 15px 5px rgba(138, 119, 243, 0.2),
+				inset 8px 8px 15px 5px rgba(138, 119, 243, 0.2);
+			transform: scale(1.05);
+		}
+
+		.cont {
+			padding: 2px 16px;
+		}
+
+
+
+		h6 {
+			color: rgb(0, 0, 0);
+		}
+
+		h6,
+		p {
+			margin: 0px;
+		}
+	</style>
+</head>
+
+<body class="ttr-opened-sidebar ttr-pinned-sidebar">
+
+	<header class="ttr-header">
+		<div class="ttr-header-wrapper">
+			<div class="ttr-toggle-sidebar ttr-material-button">
+				<i class="ti-close ttr-open-icon"></i>
+				<i class="ti-menu ttr-close-icon"></i>
+			</div>
+			<div class="ttr-logo-box">
+				<div>
+					<a href="tindex.html" class="ttr-logo">
+						<img class="ttr-logo-mobile" alt="" src="../images/logo-mobile.png" width="30" height="30">
+						<img class="ttr-logo-desktop" alt="" src="../images/logo-white.png" width="50" height="27">
+					</a>
+				</div>
+			</div>
+			<div class="ttr-header-menu" id="header-menu">
+
+			</div>
+			<script src="../js/header-menu.js"></script>
+			<div class="ttr-header-right ttr-with-seperator" id="header-right">
+
+			</div>
+			<script src="../js/header-right.js"></script>
+			<div class="ttr-search-bar">
+				<form class="ttr-search-form">
+					<div class="ttr-search-input-wrapper">
+						<input type="text" name="qq" placeholder="search something..." class="ttr-search-input">
+						<button type="submit" name="search" class="ttr-search-submit"><i
+								class="ti-arrow-right"></i></button>
+					</div>
+					<span class="ttr-search-close ttr-search-toggle">
+						<i class="ti-close"></i>
+					</span>
+				</form>
+			</div>
+		</div>
+	</header>
+	<div class="ttr-sidebar" id="sidebar"></div>
+	<script src="../js/nav-bar-side.js"></script>
+
+	<main class="ttr-wrapper">
+		<div class="container-fluid">
+			<div class="db-breadcrumb">
+				<h4 class="breadcrumb-title">Dashboard</h4>
+				<ul class="db-breadcrumb-list">
+					<li><a href="index.html"><i class="fa fa-home"></i>Home</a></li>
+					<li><a href="index.html">Dashboard</a></li>
+				</ul>
+			</div>
+			<div class="row">
+				<div class="col-md-6 col-lg-3 col-xl-3 col-sm-6 col-12">
+					<div class="widget-card widget-bg1">
+						<div class="wc-item">
+							<h4 class="wc-title">
+								My Courses
+							</h4>
+							<br>
+							<span class="wc-des">
+								All Courses by me
+							</span>
+							<span class="wc-stats">
+								<span class="counter" id="cors"></span>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-3 col-xl-3 col-sm-6 col-12">
+					<div class="widget-card widget-bg2">
+						<div class="wc-item">
+							<h4 class="wc-title">
+								Reviews
+							</h4>
+							<br>
+							<span class="wc-des">
+								Learner Reviews
+							</span>
+							<span class="wc-stats counter">
+
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-3 col-xl-3 col-sm-6 col-12">
+					<div class="widget-card widget-bg3">
+						<div class="wc-item">
+							<h4 class="wc-title">
+								Learners Enrolled
+							</h4>
+							<br>
+							<span class="wc-des">
+								in my courses
+							</span>
+							<span class="wc-stats counter" id="lers">
+
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-6 m-b30">
+					<div class="widget-box">
+						<div class="wc-title">
+							<h4>Learners</h4>
+						</div>
+						<div class="widget-inner">
+							<div class="new-user-list">
+								<ul id="show1"></ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6 m-b30">
+					<div class="widget-box">
+						<div class="wc-title">
+							<h4>Courses</h4>
+						</div>
+						<div class="widget-inner">
+							<div class="new-user-list" id="show2">
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<div class="ttr-overlay"></div>
+	<script>
+		var j = 0;
+		$.get("http://localhost:3470/faculty-det/", function (obj, status) {
+			var str = "";
+			for (i in obj) {
+				if (obj[i].uploaded == JSON.parse(sessionStorage.getItem("email")).email) {
+					str += `<div class='col-md-6'>`
+					str += `<div class='card'> <div class='cont'>`
+					str += `<h6> Course Name: <b> ${obj[i].name} </b> </h6>`;
+					str += `<p style="color : black; "> Price: <b> ${obj[i].price}  </b> </p>`;
+					str += `<p style="color : black"> Description: <b> ${obj[i].description}  </b> </p>`;
+					str += `<p style="color : black"> No. Students: <b> ${obj[i].students.length}  </b> </p>`
+					str += `</div> </div> </div> `
+					j++;
+				}
+			}
+			var cnt = {};
+			for (i in obj) {
+				if (obj[i].uploaded == JSON.parse(sessionStorage.getItem("email")).email) {
+					for (k in obj[i].students) {
+						cnt[obj[i].students[k]._id+obj[i].name] = {course : obj[i].name, name :obj[i].students[k].name, email : obj[i].students[k].email, ID: obj[i].students[k]._id }
+					}
+				}
+			}
+			// console.log(cnt);
+			
+			document.getElementById("cors").innerText = j;
+			document.getElementById("show2").innerHTML = str;
+			var stx = "";
+			for (i in cnt) {
+				stx += `<li class="mar1">
+                <span class="new-users-pic">
+                    <img class="mar" src="../images/testimonials/pic3.jpg" alt="" width=30px height=30px/>
+                </span>
+                <span class="new-users-text">
+                    <a href="#" class="new-users-name">${cnt[i].name} </a>
+                    <span class="new-users-info" style="color : black"><i>${cnt[i].email}</i></span>
+					<br>
+					<span class="new-users-info" style="color : black">Course : <b>${cnt[i].course} </b> </span>
+                </span>
+                </li>`;
+			}
+			document.getElementById("lers").innerText = Object.keys(cnt).length;
+			document.getElementById("show1").innerHTML = stx;
+		});
+
+	</script>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../vendors/bootstrap/js/popper.min.js"></script>
+	<script src="../vendors/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../vendors/bootstrap-select/bootstrap-select.min.js"></script>
+	<script src="../vendors/bootstrap-touchspin/jquery.bootstrap-touchspin.js"></script>
+	<script src="../vendors/magnific-popup/magnific-popup.js"></script>
+	<script src="../vendors/counter/waypoints-min.js"></script>
+	<script src="../vendors/counter/counterup.min.js"></script>
+	<script src="../vendors/imagesloaded/imagesloaded.js"></script>
+	<script src="../vendors/masonry/masonry.js"></script>
+	<script src="../vendors/masonry/filter.js"></script>
+	<script src="../vendors/owl-carousel/owl.carousel.js"></script>
+	<script src='../vendors/scroll/scrollbar.min.js'></script>
+	<script src="../js/functions.js"></script>
+	<script src="../vendors/chart/chart.min.js"></script>
+	<script src="../js/admin.js"></script>
+	<script src='../vendors/calendar/moment.min.js'></script>
+	<script src='../vendors/calendar/fullcalendar.js'></script>
+
+</body>
+
+</html>
