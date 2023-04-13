@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Mirrored from educhamp.themetrades.com/demo/admin/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Feb 2019 13:08:15 GMT -->
+
+<head>
+	<script src="https://code.jquery.com/jquery-3.6.4.js"
+		integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+	<script src="../../ajaxcalls.js"></script>
+	<!-- META ============================================= -->
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="keywords" content="" />
+	<meta name="author" content="" />
+	<meta name="robots" content="" />
+
+	<!-- DESCRIPTION -->
+	<meta name="description" content="Learn++ Course-X" />
+
+	<!-- OG -->
+	<meta property="og:title" content="Learn++ Course-X" />
+	<meta property="og:description" content="Learn++ Course-X" />
+	<meta property="og:image" content="" />
+	<meta name="format-detection" content="telephone=no" />
+
+	<!-- FAVICONS ICON ============================================= -->
+	<link rel="icon" href="../error-404.html" type="image/x-icon" />
+	<link rel="shortcut icon" type="image/x-icon" href="../images/favicon.png" />
+
+	<!-- PAGE TITLE HERE ============================================= -->
+	<title>Learn++ Course-X</title>
+
+	<!-- MOBILE SPECIFIC ============================================= -->
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+      <script src="../js/respond.min.js"></script>
+    <![endif]-->
+
+	<!-- All PLUGINS CSS ============================================= -->
+	<link rel="stylesheet" type="text/css" href="../css/assets.css" />
+	<link rel="stylesheet" type="text/css" href="../vendors/calendar/fullcalendar.css" />
+
+	<!-- TYPOGRAPHY ============================================= -->
+	<link rel="stylesheet" type="text/css" href="../css/typography.css" />
+
+	<!-- SHORTCODES ============================================= -->
+	<link rel="stylesheet" type="text/css" href="../css/shortcodes/shortcodes.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+	<!-- STYLESHEETS ============================================= -->
+	<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	<link rel="stylesheet" type="text/css" href="../css/dashboard.css" />
+	<link class="skin" rel="stylesheet" type="text/css" href="../css/color/color-1.css" />
+	<style>
+		.card1 {
+			box-shadow: 4px 4px 5px 1px rgba(138, 119, 243, 0.2);
+			transition: transform 0.3s ease-in-out;
+			border-radius: 5px;
+			/* width: 200%; */
+			/* height: auto; */
+			margin: 20px;
+			padding: 10px;
+			transition: transform 0.5s ease-in-out;
+			background-color: rgba(248, 51, 51, 0);
+		}
+
+		.card1:hover {
+			box-shadow: 8px 8px 15px 5px rgba(138, 119, 243, 0.2),
+				inset 8px 8px 15px 5px rgba(138, 119, 243, 0.2);
+			transform: scale(1.1);
+		}
+
+		.cont {
+			padding: 2px 16px;
+		}
+
+		/* img {
+			border-radius: 10px 5px 10px 5px;
+			transition: transform 0.5s ease-in-out;
+			padding: 20px;
+			margin: 30px;
+		} */
+
+		h5 {
+			color: rgb(0, 0, 0);
+		}
+
+		.mar1 {
+			width: 500px;
+			height: 75px;
+		}
+
+		.mar {
+			margin-top: 50px;
+			margin-bottom: 0px;
+		}
+
+		#chart-wrapper {
+			width: 45%;
+			height: 100%;
+		}
+	</style>
+</head>
+
+<body class="ttr-opened-sidebar ttr-pinned-sidebar">
+	<!-- header start -->
+	<div class="ttr-header" id="ttr-header"></div>
+	<script src="../js/header-ad.js"></script>
+	<!-- header end -->
+	<!-- Left sidebar menu start -->
+	<div class="ttr-sidebar" id="ttr-sidebar"></div>
+	<script src="../js/left-nav-bar.js"></script>
+	<!-- Left sidebar menu end -->
+
+	<!--Main container start -->
+	<main class="ttr-wrapper">
+		<div class="container-fluid">
+			<div class="db-breadcrumb">
+				<h4 class="breadcrumb-title">Dashboard</h4>
+				<ul class="db-breadcrumb-list">
+					<li>
+						<a href="adindex.html"><i class="fa fa-home"></i>Home</a>
+					</li>
+					<li>
+						<a href="adindex.html"><i></i>Dashboard</a>
+					</li>
+				</ul>
+			</div>
+			<!-- Card -->
+			<div class="row">
+				<div class="col-md-6 col-lg-3 col-xl-3 col-sm-6 col-12">
+					<div class="widget-card widget-bg2">
+						<div class="wc-item">
+							<h4 class="wc-title">Courses</h4>
+							<br />
+							<span class="wc-des"> Number of Courses </span>
+							<span class="wc-stats counter" id="crs"> 0 </span>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-3 col-xl-3 col-sm-6 col-12">
+					<div class="widget-card widget-bg3">
+						<div class="wc-item">
+							<h4 class="wc-title">Instructors</h4>
+							<br />
+							<span class="wc-des"> Number of Instructors </span>
+							<span class="wc-stats counter" id="ins"></span>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-3 col-xl-3 col-sm-6 col-12">
+					<div class="widget-card widget-bg4">
+						<div class="wc-item">
+							<h4 class="wc-title">Learners</h4>
+							<br />
+							<span class="wc-des"> Number of Learners </span>
+							<span class="wc-stats counter" id="ler"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="">
+				<div id="chart-wrapper">
+					<div class="container">
+						<h5>Category wise students enrolled in courses</h5>
+						<canvas id="chart1" aria-label="chart" role="img" radius="2px"></canvas>
+					</div>
+				</div>
+				<div id="chart-wrapper">
+					<div class="container">
+						<h5>Students in each course</h5>
+						<canvas id="chart2" aria-label="chart" role="img" width="20px" height="20px"></canvas>
+					</div>
+				</div>
+			</div>
+
+			<!-- Card END -->
+			<div class="row">
+				<div class="col-lg-6 m-b30">
+					<div class="widget-box">
+						<div class="wc-title">
+							<h4>Instructors</h4>
+						</div>
+						<div class="widget-inner">
+							<div class="new-user-list">
+								<ul id="front1"></ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6 m-b30">
+					<div class="widget-box">
+						<div class="wc-title">
+							<h4>Learners</h4>
+						</div>
+						<div class="widget-inner">
+							<div class="new-user-list">
+								<ul id="front2">
+								</ul>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<div class="ttr-overlay"></div>
+
+	<script>
+		$.get("http://localhost:3470/admin-home-l/", function (obj, status) {
+			$("#ler").text(obj.length);
+		});
+		$.get("http://localhost:3470/admin-home-i/", function (obj, status) {
+			$("#ins").text(obj.length);
+		});
+		$.get("http://localhost:3470/faculty-det/", function (obj, status) {
+			$("#crs").text(obj.length);
+		})
+	</script>
+	<script>
+		var labels = []
+		var datasets = []
+		$.get("http://localhost:3470/chart1/", function (obj, status) {
+			var ctx = document.getElementById("chart1").getContext("2d");
+			for (i in obj) {
+				labels.push(obj[i]._id);
+				datasets.push(obj[i].count);
+			}
+
+			var data1 = {
+				labels: labels,
+				datasets: [
+					{
+						label: "Total Students in Various Categories",
+						data: datasets,
+						backgroundColor: [
+							"blue",
+							"red",
+							"green",
+						],
+						borderColor: [
+							"darkblue",
+							"darkred",
+							"darkgreen",
+						],
+						borderWidth: [1, 1, 1]
+					}
+				]
+			}
+			var options = {
+				responsive: true,
+				title: {
+					display: true,
+					position: top,
+					text: "Pie Chart",
+					fontSize: 18,
+					fontColor: "#111"
+				},
+				legend: {
+					display: true,
+					position: "bottom",
+					labels: {
+						fontColor: "#333",
+						fontSize: 16
+					}
+				}
+			};
+			var chart1 = new Chart(ctx, {
+				type: "doughnut",
+				data: data1,
+				options: options
+			});
+		});
+	</script>
+	<script>
+		var label = []
+		var dataset = []
+		$.get("http://localhost:3470/chart2/", function (obj, status) {
+			var ctx = document.getElementById("chart2").getContext("2d");
+			for (i in obj) {
+				label.push(obj[i].name);
+				dataset.push(obj[i].students.length);
+			}
+
+			var data1 = {
+				labels: label,
+				datasets: [
+					{
+						data: dataset,
+						fill: false,
+						backgroundColor: [
+							"blue",
+							"green",
+							"maroon",
+							"red",
+							"purple",
+							"yellow",
+							"lightgreen",
+							"darkgreen",
+						],
+						borderWidth: [5, 5]
+					}
+				]
+			};
+			new Chart(ctx, {
+				type: "bar",
+				data: data1,
+				options: {
+					responsive: true,
+					scales: {
+						yAxes: [{
+							ticks: {
+								beginAtZero: true
+							}
+						}]
+					}
+				}
+			});
+		});
+	</script>
+	<!-- External JavaScripts -->
+	<script src="../js/jquery.min.js"></script>
+	<script src="../vendors/bootstrap/js/popper.min.js"></script>
+	<script src="../vendors/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../vendors/bootstrap-select/bootstrap-select.min.js"></script>
+	<script src="../vendors/bootstrap-touchspin/jquery.bootstrap-touchspin.js"></script>
+	<script src="../vendors/magnific-popup/magnific-popup.js"></script>
+	<script src="../vendors/counter/waypoints-min.js"></script>
+	<script src="../vendors/counter/counterup.min.js"></script>
+	<script src="../vendors/imagesloaded/imagesloaded.js"></script>
+	<script src="../vendors/masonry/masonry.js"></script>
+	<script src="../vendors/masonry/filter.js"></script>
+	<script src="../vendors/owl-carousel/owl.carousel.js"></script>
+	<script src="../vendors/scroll/scrollbar.min.js"></script>
+	<script src="../js/adfunctions.js"></script>
+	<script src="../js/admin.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+	<!-- <script src="../js/header.js"></script> -->
+	<!-- <script src="../js/left-nav-bar.js"></script> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+	<!-- <script src="../js/onload.js"></script> -->
+</body>
+
+<!-- Mirrored from educhamp.themetrades.com/demo/admin/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Feb 2019 13:09:05 GMT -->
+
+</html>

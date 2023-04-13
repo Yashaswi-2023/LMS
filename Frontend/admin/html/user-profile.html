@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+
+
+
+<head>
+
+
+
+	<meta charset="utf-8">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<meta name="keywords" content="" />
+
+	<meta name="author" content="" />
+
+	<meta name="robots" content="" />
+
+
+
+	<meta name="description" content="Learn++ Course-X" />
+
+
+
+	<meta property="og:title" content="Learn++ Course-X" />
+
+	<meta property="og:description" content="Learn++ Course-X" />
+
+	<meta property="og:image" content="" />
+
+	<meta name="format-detection" content="telephone=no">
+
+
+
+	<link rel="icon" href="../error-404.html" type="image/x-icon" />
+
+	<link rel="shortcut icon" type="image/x-icon" href="../images/favicon.png" />
+
+
+
+	<title>Learn++ Course-X </title>
+
+
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+
+	<link rel="stylesheet" type="text/css" href="../css/assets.css">
+
+	<link rel="stylesheet" type="text/css" href="../vendors/calendar/fullcalendar.css">
+
+
+
+	<link rel="stylesheet" type="text/css" href="../css/typography.css">
+
+
+
+	<link rel="stylesheet" type="text/css" href="../css/shortcodes/shortcodes.css">
+
+
+
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+
+	<link rel="stylesheet" type="text/css" href="../css/dashboard.css">
+
+	<link class="skin" rel="stylesheet" type="text/css" href="../css/color/color-1.css">
+
+	<script src="https://code.jquery.com/jquery-3.6.4.js"
+		integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+
+</head>
+
+
+
+<body class="ttr-opened-sidebar ttr-pinned-sidebar">
+
+
+
+	<header class="ttr-header" id="ttr-header">
+
+	</header>
+
+	<div class="ttr-sidebar" id="ttr-sidebar">
+
+	</div>
+
+
+
+	<main class="ttr-wrapper">
+
+		<div class="container-fluid">
+
+			<div class="db-breadcrumb">
+
+				<h4 class="breadcrumb-title">User Profile</h4>
+
+				<ul class="db-breadcrumb-list">
+
+					<li><a href="#"><i class="fa fa-home"></i>Home</a></li>
+
+					<li>User Profile</li>
+
+				</ul>
+
+			</div>
+
+			<div class="row">
+
+				<div class="col-lg-12 m-b30">
+
+					<div class="widget-box">
+
+						<div class="wc-title">
+
+							<h4>User Profile</h4>
+
+						</div>
+
+						<div class="widget-inner">
+
+							<form class="edit-profile m-b30" id="formdata" enctype="multipart/form-data">
+
+								<div class="">
+
+									<div class="form-group row">
+
+
+
+										<div class="col-sm-10 ml-auto">
+
+											<h3>1. Personal Details</h3>
+
+										</div>
+
+									</div>
+
+
+
+
+
+									<div class="form-group row">
+
+										<label class="col-sm-2 col-form-label">Current Picture</label>
+
+										<div class="col-sm-7" id="profile">
+
+											<!-- <img src="../../../backend/profileuploads/0a1a4bdddc0530056f547ebc36cad3c3" id="profile" alt="" width="100px" height="180px"> -->
+
+										</div>
+
+									</div>
+
+
+
+
+
+									<div class="form-group row">
+
+										<label class="col-sm-2 col-form-label">Upload Picture</label>
+
+										<div class="col-sm-7">
+
+											<input name="apic" class="form-control mquiz" type="file" value="" id="apic"
+												name="apic" required>
+
+										</div>
+
+									</div>
+
+
+
+									<div class="form-group row">
+
+										<label class="col-sm-2 col-form-label">Full Name</label>
+
+										<div class="col-sm-7">
+
+											<input class="form-control" type="text" value="" name="aname" id="aname"
+												required>
+
+										</div>
+
+									</div>
+
+
+
+
+
+									<div class="form-group row">
+
+										<label class="col-sm-2 col-form-label">Email</label>
+
+										<div class="col-sm-7">
+
+											<input class="form-control" type="text" value="" name="aemail" id="aemail"
+												required>
+
+										</div>
+
+									</div>
+
+
+
+									<div class="form-group row">
+
+										<label class="col-sm-2 col-form-label">Occupation</label>
+
+										<div class="col-sm-7">
+
+											<input class="form-control" type="text" value="" name="aoccu" id="aoccu"
+												required>
+
+										</div>
+
+									</div>
+
+									<div class="form-group row">
+
+										<label class="col-sm-2 col-form-label">Company Name</label>
+
+										<div class="col-sm-7">
+
+											<input class="form-control" type="text" value="" name="acom" id="acom"
+												required>
+
+										</div>
+
+									</div>
+
+									<div class="form-group row">
+
+										<label class="col-sm-2 col-form-label">Phone No.</label>
+
+										<div class="col-sm-7">
+
+											<input class="form-control" type="text" value="" name="aphon" id="aphon"
+												required>
+
+										</div>
+
+									</div>
+
+
+
+									<div class="seperator"></div>
+
+
+
+									<div class="form-group row">
+
+										<div class="col-sm-10 ml-auto">
+
+											<h3>2. Address</h3>
+
+										</div>
+
+									</div>
+
+									<div class="form-group row">
+
+										<label class="col-sm-2 col-form-label">Address</label>
+
+										<div class="col-sm-7">
+
+											<input class="form-control" type="text" value="" name="aadd" id="aadd"
+												required>
+
+										</div>
+
+									</div>
+
+									<div class="form-group row">
+
+										<label class="col-sm-2 col-form-label">City</label>
+
+										<div class="col-sm-7">
+
+											<input class="form-control" type="text" value="" name="acity" id="acity"
+												required>
+
+										</div>
+
+									</div>
+
+									<div class="form-group row">
+
+										<label class="col-sm-2 col-form-label">State</label>
+
+										<div class="col-sm-7">
+
+											<input class="form-control" type="text" value="" name="astate" id="astate"
+												required>
+
+										</div>
+
+									</div>
+
+									<div class="form-group row">
+
+										<label class="col-sm-2 col-form-label">Postcode</label>
+
+										<div class="col-sm-7">
+
+											<input class="form-control" type="text" value="" name="apost" id="apost"
+												required>
+
+										</div>
+
+									</div>
+
+
+
+									<div
+										class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x">
+									</div>
+
+
+
+									<div class="form-group row">
+
+										<div class="col-sm-10 ml-auto">
+
+											<h3 class="m-form__section">3. Social Links</h3>
+
+										</div>
+
+									</div>
+
+
+
+									<div class="form-group row">
+
+										<label class="col-sm-2 col-form-label">Linkedin</label>
+
+										<div class="col-sm-7">
+
+											<input class="form-control" type="text" value="www.linkedin.com"
+												name="alikd" id="alikd" required>
+
+										</div>
+
+									</div>
+
+									<div class="form-group row">
+
+										<label class="col-sm-2 col-form-label">Facebook</label>
+
+										<div class="col-sm-7">
+
+											<input class="form-control" type="text" value="www.facebook.com" name="afb"
+												id="afb" required>
+
+										</div>
+
+									</div>
+
+									<div class="form-group row">
+
+										<label class="col-sm-2 col-form-label">Twitter</label>
+
+										<div class="col-sm-7">
+
+											<input class="form-control" type="text" value="www.twitter.com" name="atwt"
+												id="atwt" required>
+
+										</div>
+
+									</div>
+
+									<div class="form-group row">
+
+										<label class="col-sm-2 col-form-label">Instagram</label>
+
+										<div class="col-sm-7">
+
+											<input class="form-control" type="text" value="www.instagram.com"
+												name="ainst" id="ainst" required>
+
+										</div>
+
+									</div>
+
+								</div>
+
+								<div class="">
+
+									<div class="">
+
+										<div class="row">
+
+											<div class="col-sm-2">
+
+											</div>
+
+											<div class="col-sm-7">
+
+												<button type="submit" class="btn">Save changes</button>
+
+												<button type="reset" class="btn-secondry">Cancel</button>
+
+											</div>
+
+										</div>
+
+									</div>
+
+								</div>
+
+							</form>
+
+							<form class="edit-profile">
+
+								<div class="">
+
+									<div class="form-group row">
+
+										<div class="col-sm-10 ml-auto">
+
+											<h3>4. Password</h3>
+
+										</div>
+
+									</div>
+
+									<div class="form-group row">
+
+										<label class="col-sm-2 col-form-label">Current Password</label>
+
+										<div class="col-sm-7">
+
+											<input class="form-control" type="password" value="" id="change1">
+
+										</div>
+
+									</div>
+
+									<div class="form-group row">
+
+										<label class="col-sm-2 col-form-label">New Password</label>
+
+										<div class="col-sm-7">
+
+											<input class="form-control" type="password" value="" id="change2">
+
+										</div>
+
+									</div>
+
+									<div class="form-group row">
+
+										<label class="col-sm-2 col-form-label">Re Type Password</label>
+
+										<div class="col-sm-7">
+
+											<input class="form-control" type="password" value="" id="change3">
+
+
+
+											<p id="changing"></p>
+
+										</div>
+
+									</div>
+
+								</div>
+
+								<div class="row">
+
+									<div class="col-sm-2">
+
+									</div>
+
+									<div class="col-sm-7">
+
+										<button type="button" class="btn" onclick="changePasswordAdmin()">Save
+											changes</button>
+
+
+
+										<button type="button" class="btn-secondry" onclick="resetData()">Cancel</button>
+
+									</div>
+
+								</div>
+
+
+
+							</form>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</main>
+
+
+
+	<script>
+
+
+
+		function resetData() {
+
+
+
+			document.getElementById("change1").value = "";
+
+
+
+			document.getElementById("change2").value = "";
+
+
+
+			document.getElementById("change3").value = "";
+
+
+
+		}
+
+
+
+	</script>
+
+
+
+	<script>
+
+		$(document).ready(() => {
+
+			$("#formdata").submit(function () {
+
+				var data = new FormData($("#formdata")[0])
+
+				console.log(data);
+
+				$.ajax({
+
+					url: "http://localhost:3470/user-profile_changeProfile",
+
+					type: "POST",
+
+					contentType: false,
+
+					processData: false,
+
+					enctype: "multipart/form-data",
+
+					cache: false,
+
+					data: data,
+
+					success: (data) => {
+
+						console.log("hello")
+
+					}
+
+				})
+
+			})
+
+		})
+
+		// Get the form element
+		const form = document.getElementById("formdata");
+
+		// Add an event listener for form submission
+		form.addEventListener("submit", function (event) {
+			// Prevent form submission
+			event.preventDefault();
+
+			// Get all the input fields in the form
+			const inputs = form.querySelectorAll("input");
+
+			// Loop through each input and validate its value
+			let isValid = true;
+			inputs.forEach(function (input) {
+				// Get the input's value and trim any leading/trailing whitespace
+				const value = input.value.trim();
+
+				// If the input is required and has no value, mark it as invalid
+				if (input.hasAttribute("required") && value === "") {
+					input.classList.add("is-invalid");
+					isValid = false;
+				} else {
+					input.classList.remove("is-invalid");
+				}
+
+				// If the input has a specific format to match, use a regular expression to validate it
+				if (input.hasAttribute("data-format")) {
+					const format = input.getAttribute("data-format");
+					const regex = new RegExp(format);
+					if (!regex.test(value)) {
+						input.classList.add("is-invalid");
+						isValid = false;
+					} else {
+						input.classList.remove("is-invalid");
+					}
+				}
+			});
+
+			// If all inputs are valid, submit the form
+			if (isValid) {
+				form.submit();
+			}
+		});
+
+
+	</script>
+
+
+
+	<div class="ttr-overlay"></div>
+
+	<script src="../js/header-ad.js"></script>
+
+	<script src="../js/left-nav-bar.js"></script>
+
+	<script src="../js/jquery.min.js"></script>
+
+	<script src="../vendors/bootstrap/js/popper.min.js"></script>
+
+	<script src="../vendors/bootstrap/js/bootstrap.min.js"></script>
+
+	<script src="../vendors/bootstrap-select/bootstrap-select.min.js"></script>
+
+	<script src="../vendors/bootstrap-touchspin/jquery.bootstrap-touchspin.js"></script>
+
+	<script src="../vendors/magnific-popup/magnific-popup.js"></script>
+
+	<script src="../vendors/counter/waypoints-min.js"></script>
+
+	<script src="../vendors/counter/counterup.min.js"></script>
+
+	<script src="../vendors/imagesloaded/imagesloaded.js"></script>
+
+	<script src="../vendors/masonry/masonry.js"></script>
+
+	<script src="../vendors/masonry/filter.js"></script>
+
+	<script src="../vendors/owl-carousel/owl.carousel.js"></script>
+
+	<script src='../vendors/scroll/scrollbar.min.js'></script>
+
+	<script src="../js/functions.js"></script>
+
+	<script src="../../ajaxcalls.js"></script>
+
+	<!-- <script src="../vendors/chart/chart.min.js"></script> -->
+
+	<script src="../js/admin.js"></script>
+
+</body>
+
+
+
+
+
+</html>
