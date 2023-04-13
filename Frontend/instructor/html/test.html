@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Admin Panel - Add Test</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+
+      input[type="text"],
+      select {
+        padding: 10px;
+        margin-bottom: 20px;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 0 5px #ccc;
+        width: 100%;
+      }
+
+      input[type="submit"] {
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #3e8e41;
+      }
+
+      .question {
+        margin-bottom: 20px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 100%;
+      }
+
+      .question label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+
+      .question input[type="text"] {
+        margin-bottom: 10px;
+        width: 100%;
+      }
+
+      .options {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .option {
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+
+      .option label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .option input[type="text"] {
+        margin-right: 5px;
+      }
+
+      .option input[type="radio"] {
+        margin-right: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Add Test</h1>
+      <form>
+        <label for="test-name">Test Name:</label>
+        <input type="text" id="test-name" name="testName" required>
+
+        <label for="test-description">Test Description:</label>
+        <input type="text" id="test-description" name="testDescription" required>
+
+        <div id="questions-container"></div>
+
+        <input type="button" id="add-question-btn" value="Add Question">
+        <input type="submit" value="Submit Test">
+      </form>
+    </div>
+
+    <script>
+        const addQuestionBtn = document.getElementById("add-question-btn");
+        const questionsContainer = document.getElementById("questions-container");
+  
+        let questionCount = 0;
+  
+        addQuestionBtn.addEventListener("click", () => {
+          questionCount++;
+  
+          const questionDiv = document.createElement("div");
+          questionDiv.classList.add("question");
+  
+          const questionLabel = document.createElement("label");
+          questionLabel.setAttribute("for", "question-" + questionCount);
+          questionLabel.textContent = "Question " + questionCount + ":";
+  
+          const questionInput = document.createElement("input");
+      questionInput.setAttribute("type", "text");
+      questionInput.setAttribute("id", "question-" + questionCount);
+      questionInput.setAttribute("name", "question-" + questionCount);
+      questionInput.setAttribute("required", "");
+  
+      const optionsDiv = document.createElement("div");
+      optionsDiv.classList.add("options");
+  
+      for (let i = 1; i <= 4; i++) {
+        const optionDiv = document.createElement("div");
+        optionDiv.classList.add("option");
+  
+        const optionLabel = document.createElement("label");
+        optionLabel.setAttribute("for", "question-" + questionCount + "-option-" + i);
+        optionLabel.textContent = "Option " + i + ":";
+  
+        const optionInput = document.createElement("input");
+        optionInput.setAttribute("type", "text");
+        optionInput.setAttribute("id", "question-" + questionCount + "-option-" + i);
+        optionInput.setAttribute("name", "question-" + questionCount + "-option-" + i);
+        optionInput.setAttribute("required", "");
+  
+        const correctOptionInput = document.createElement("input");
+        correctOptionInput.setAttribute("type", "radio");
+        correctOptionInput.setAttribute("id", "question-" + questionCount + "-correct-option-" + i);
+        correctOptionInput.setAttribute("name", "question-" + questionCount + "-correct-option");
+        correctOptionInput.setAttribute("value", i);
+        correctOptionInput.setAttribute("required", "");
+  
+        const correctOptionLabel = document.createElement("label");
+        correctOptionLabel.setAttribute("for", "question-" + questionCount + "-correct-option-" + i);
+        correctOptionLabel.textContent = "Correct?";
+  
+        optionDiv.appendChild(optionLabel);
+        optionDiv.appendChild(optionInput);
+        optionDiv.appendChild(correctOptionInput);
+        optionDiv.appendChild(correctOptionLabel);
+        optionsDiv.appendChild(optionDiv);
+      }
+  
+      questionDiv.appendChild(questionLabel);
+      questionDiv.appendChild(questionInput);
+      questionDiv.appendChild(optionsDiv);
+  
+      questionsContainer.appendChild(questionDiv);
+    });
+  </script>
+

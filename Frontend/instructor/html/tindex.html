@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<script src="https://code.jquery.com/jquery-3.6.4.js"
+		integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+	<script src="../../ajaxcalls.js"></script>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="" />
+	<meta name="author" content="" />
+	<meta name="robots" content="" />
+
+	<meta name="description" content="Learn++ Course-X" />
+	<meta property="og:title" content="Learn++ Course-X" />
+	<meta property="og:description" content="Learn++ Course-X" />
+	<meta property="og:image" content="" />
+	<meta name="format-detection" content="telephone=no">
+
+	<link rel="icon" href="error-404.html" type="image/x-icon" />
+	<link rel="shortcut icon" type="image/x-icon" href="../images/favicon.png" />
+
+	<title>Learn++ Course-X </title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" type="text/css" href="../css/assets.css">
+	<link rel="stylesheet" type="text/css" href="../vendors/calendar/fullcalendar.css">
+
+	<link rel="stylesheet" type="text/css" href="../css/typography.css">
+
+	<link rel="stylesheet" type="text/css" href="../css/shortcodes/shortcodes.css">
+
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/dashboard.css">
+	<link class="skin" rel="stylesheet" type="text/css" href="../css/color/color-1.css">
+	<style>
+		.card {
+			box-shadow: 4px 4px 5px 1px rgba(138, 119, 243, 0.2);
+			transition: transform 0.3s ease-in-out;
+			border-radius: 5px;
+			width: 200%;
+			/* height: auto; */
+			margin: 20px;
+			padding: 10px;
+			transition: transform 0.5s ease-in-out;
+			background-color: rgba(248, 51, 51, 0)
+		}
+
+		.card:hover {
+			box-shadow: 8px 8px 15px 5px rgba(138, 119, 243, 0.2),
+				inset 8px 8px 15px 5px rgba(138, 119, 243, 0.2);
+			transform: scale(1.05);
+		}
+
+		.cont {
+			padding: 2px 16px;
+		}
+
+		.mar1:hover {
+
+			box-shadow: 8px 8px 15px 5px rgba(138, 119, 243, 0.2),
+				inset 8px 8px 15px 5px rgba(138, 119, 243, 0.2);
+		}
+
+		h6 {
+			color: rgb(0, 0, 0);
+		}
+
+		h6,
+		p {
+			margin: 0px;
+		}
+
+		#chart-wrapper {
+			width: 45%;
+			height: 100%;
+		}
+	</style>
+</head>
+
+<body class="ttr-opened-sidebar ttr-pinned-sidebar">
+
+	<header class="ttr-header" id="ttr-header">
+	
+	</header>
+	<script src="../js/header-right.js"></script>
+	<div class="ttr-sidebar" id="sidebar"></div>
+	<script src="../js/nav-bar-side.js"></script>
+
+	<main class="ttr-wrapper">
+		<div class="container-fluid">
+			<div class="db-breadcrumb">
+				<h4 class="breadcrumb-title">Dashboard</h4>
+				<ul class="db-breadcrumb-list">
+					<li><a href="tindex.html"><i class="fa fa-home"></i>Home</a></li>
+					<li><a href="tindex.html">Dashboard</a></li>
+				</ul>
+			</div>
+			<div class="row">
+				<div class="col-md-6 col-lg-3 col-xl-3 col-sm-6 col-12 w-0" >
+					<div class="widget-card widget-bg1">
+						<div class="wc-item">
+							<h4 class="wc-title">
+								My Courses
+							</h4>
+							<br>
+							<span class="wc-des">
+								All Courses by me
+							</span>
+							<span class="wc-stats">
+								<span class="counter" id="cors"></span>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-3 col-xl-3 col-sm-6 col-12 w-0">
+					<div class="widget-card widget-bg2">
+						<div class="wc-item">
+							<h4 class="wc-title">
+								Reviews
+							</h4>
+							<br>
+							<span class="wc-des">
+								Learner Reviews
+							</span>
+							<span id="reviews-len" class="wc-stats counter">
+
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-3 col-xl-3 col-sm-6 col-12">
+					<div class="widget-card widget-bg3">
+						<div class="wc-item">
+							<h4 class="wc-title">
+								Learners Enrolled
+							</h4>
+							<br>
+							<span class="wc-des">
+								in my courses
+							</span>
+							<span class="wc-stats counter" id="lers" >
+
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div>
+				<!-- <div id="chart-wrapper">
+					<h5>Courses in each category</h5>
+					<canvas id="chart1" aria-label="chart" role="img" radius="2px"></canvas>
+				</div> -->
+				<div id="chart-wrapper">
+					<div class="container">
+						<h5>Students in each course</h5>
+						<canvas id="chart2" aria-label="chart" role="img" width="20px" height="20px"></canvas>
+					</div>
+
+				</div>
+				<div id="chart-wrapper">
+					<div class="container">
+						<h5>Ratings of each course</h5>
+						<canvas id="speedCanvas" aria-label="chart" role="img" width="20px" height="20px"></canvas>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-6 m-b30">
+					<div class="widget-box">
+						<div class="wc-title">
+							<h4>Learners</h4>
+						</div>
+						<div class="widget-inner">
+							<div class="new-user-list">
+								<ul id="show1"></ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<div class="ttr-overlay"></div>
+	<script>
+
+		$.get("http://localhost:3470/faculty-det/", function (obj, status) {
+			var j = 0;
+			var str = "";
+			for (i in obj) {
+				if (obj[i].uploaded == JSON.parse(sessionStorage.getItem("email")).email && obj[i].status) {
+					j++;
+				}
+			}
+			document.getElementById("cors").innerText = j;
+			var cnt = {};
+			for (i in obj) {
+				if (obj[i].uploaded == JSON.parse(sessionStorage.getItem("email")).email && obj[i].status) {
+					for (k in obj[i].students) {
+						// console.log();
+						if (!(obj[i].students[k]._id in cnt)) {
+							cnt[obj[i].students[k]._id] = { course: [obj[i].name], name: obj[i].students[k].name, email: obj[i].students[k].email, ID: obj[i].students[k]._id, picture: obj[i].students[k].picture }
+							// console.log(cnt);/
+						} else {
+							// console.log(cnt);
+							cnt[obj[i].students[k]._id].course.push(obj[i].name)
+						}
+					}
+				}
+			}
+
+			// console.log(cnt);
+			var stx = "";
+			for (i in cnt) {
+				stx += `<li class="mar1">
+                <span class="new-users-pic" id='${cnt[i].email}'>
+                    <img class="mar rounded" src="${cnt[i].picture}" alt="" width=50px height=50px/>
+                </span>
+                <span class="new-users-text">
+                    <a href="#" class="new-users-name">${cnt[i].email} </a>
+                    <span class="new-users-info" style="color : black"><i>${cnt[i].email}</i></span>
+					<br>
+					<span class="new-users-info" style="color : black"><i>Courses: </i> <b>${cnt[i].course}</b></span>
+                </span>
+                </li>`;
+			}
+			document.getElementById("lers").innerText = Object.keys(cnt).length;
+			document.getElementById("show1").innerHTML = stx;
+
+		});
+		$.get("http://localhost:3470/faculty-det", function (obj, status) {
+			var lnth = 0
+			for (i in obj) {
+				if (obj[i].uploaded == JSON.parse(sessionStorage.getItem("email")).email)
+					lnth += obj[i].reviews.length;
+			}
+			document.getElementById("reviews-len").innerText = lnth;
+		})
+	</script>
+
+	<script>
+		var label = []
+		var dataset = []
+		$.get("http://localhost:3470/tchart2/", function (obj, status) {
+			var ctx = document.getElementById("chart2").getContext("2d");
+			for (i in obj) {
+				if (obj[i].uploaded == JSON.parse(sessionStorage.getItem("email")).email) {
+					label.push(obj[i].name);
+					dataset.push(obj[i].students.length);
+				}
+			}
+
+			var data1 = {
+				labels: label,
+				datasets: [
+					{
+						data: dataset,
+						fill: false,
+						backgroundColor: [
+							"blue",
+							"green",
+							"maroon",
+							"red",
+							"purple",
+						],
+						borderWidth: [5, 5]
+					}
+				]
+			};
+			new Chart(ctx, {
+				type: "pie",
+				data: data1,
+				options: {
+					responsive: true,
+				}
+			});
+		});
+	</script>
+	<script>
+		var labell = []
+		var datasett_ratings = []
+		var datasett_names = []
+		$.get("http://localhost:3470/tchart3/", function (obj, status) {
+			console.log(obj);
+			var ratings = []
+			for (i in obj) {
+				var count = 0;
+				if (obj[i].category[0].uploaded === JSON.parse(sessionStorage.getItem("email")).email) {
+					if (labell.length != 0) {
+						for (j in labell) {
+							count = 0;
+							if (j === obj[i]._id) {
+								count = 1;
+							}
+						}
+					}
+					if (count == 0) {
+						labell.push(obj[i]._id);
+						var duplicate_ratings = []
+						var duplicate_names = []
+						for (j in obj[i].category[0].ratings) {
+							duplicate_ratings.push(obj[i].category[0].ratings[j].ratings);
+							duplicate_names.push(obj[i].category[0].ratings[j].given_by);
+						}
+					}
+					datasett_ratings.push(duplicate_ratings);
+					datasett_names.push(duplicate_names);
+				}
+			}
+			console.log("yashhhhhhhhhhhhhhh", labell);
+			console.log("ratings", datasett_ratings);
+			console.log("names", datasett_names);
+			var speedCanvas = document.getElementById("speedCanvas");
+
+			Chart.defaults.global.defaultFontFamily = "Lato";
+			Chart.defaults.global.defaultFontSize = 18;
+
+			var color = ["red", "green", "blue", "maroon"]
+			var wholedata = []
+
+			for (i in labell) {
+				var dataFirst = {
+					label: labell[i],
+					data: datasett_ratings[i],
+					lineTension: 0,
+					fill: false,
+					borderColor: color[i]
+				}
+				wholedata.push(dataFirst);
+			}
+
+			var speedData = {
+				labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+				datasets: wholedata
+			};
+
+			var chartOptions = {
+				legend: {
+					display: true,
+					position: 'top',
+					labels: {
+						beginAtZero: true,
+						boxWidth: 80,
+						fontColor: 'black'
+					}
+
+				},
+				responsive: true,
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero: true
+						}
+					}]
+				}
+			};
+
+			var lineChart = new Chart(speedCanvas, {
+				type: 'line',
+				data: speedData,
+				options: chartOptions
+			});
+		});
+	</script>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../vendors/bootstrap/js/popper.min.js"></script>
+	<script src="../vendors/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../vendors/bootstrap-select/bootstrap-select.min.js"></script>
+	<script src="../vendors/bootstrap-touchspin/jquery.bootstrap-touchspin.js"></script>
+	<script src="../vendors/magnific-popup/magnific-popup.js"></script>
+	<script src="../vendors/counter/waypoints-min.js"></script>
+	<script src="../vendors/counter/counterup.min.js"></script>
+	<script src="../vendors/imagesloaded/imagesloaded.js"></script>
+	<script src="../vendors/masonry/masonry.js"></script>
+	<script src="../vendors/masonry/filter.js"></script>
+	<script src="../vendors/owl-carousel/owl.carousel.js"></script>
+	<script src='../vendors/scroll/scrollbar.min.js'></script>
+	<script src="../js/functions.js"></script>
+	<script src="../vendors/chart/chart.min.js"></script>
+	<script src="../js/admin.js"></script>
+	<script src='../vendors/calendar/moment.min.js'></script>
+	<script src='../vendors/calendar/fullcalendar.js'></script>
+
+</body>
+
+</html>

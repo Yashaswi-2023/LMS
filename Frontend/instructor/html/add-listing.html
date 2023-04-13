@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.js"
+        integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+
+    <script src="../../ajaxcalls.js"></script>
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="keywords" content="" />
+
+    <meta name="author" content="" />
+
+    <meta name="robots" content="" />
+
+    <meta name="description" content="Learn++ Course-X" />
+
+    <meta property="og:title" content="Learn++ Course-X" />
+
+    <meta property="og:description" content="Learn++ Course-X" />
+
+    <meta property="og:image" content="" />
+
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="icon" href="../error-404.html" type="image/x-icon" />
+
+    <link rel="shortcut icon" type="image/x-icon" href="../images/favicon.png" />
+
+    <title>Learn++ Course-X </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="../css/assets.css">
+
+    <link rel="stylesheet" type="text/css" href="../vendors/calendar/fullcalendar.css">
+
+    <link rel="stylesheet" type="text/css" href="../css/typography.css">
+
+    <link rel="stylesheet" type="text/css" href="../css/shortcodes/shortcodes.css">
+
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+
+    <link rel="stylesheet" type="text/css" href="../css/dashboard.css">
+
+    <link class="skin" rel="stylesheet" type="text/css" href="../css/color/color-1.css">
+
+</head>
+
+<body class="ttr-opened-sidebar ttr-pinned-sidebar">
+
+    <header class="ttr-header" id="ttr-header">
+	
+	</header>
+	<script src="../js/header-right.js"></script>
+
+    <div class="ttr-sidebar" id="sidebar"></div>
+
+    <script src="../js/nav-bar-side.js"></script>
+
+    <main class="ttr-wrapper">
+
+        <div class="container-fluid">
+
+            <div class="db-breadcrumb">
+
+                <h4 class="breadcrumb-title">Add Courses</h4>
+
+                <ul class="db-breadcrumb-list">
+
+                    <li><a href="tindex.html"><i class="fa fa-home"></i>Home</a></li>
+
+                    <li><a href="add-listing.html">Add Courses</a></li>
+
+                </ul>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-lg-12 m-b30">
+
+                    <div class="widget-box" >
+
+                        <div class="wc-title">
+
+                            <h4>Add Courses</h4>
+
+                        </div>
+
+                        <div class="widget-inner" style="width: 80%;">
+
+                            <form class="edit-profile m-b30" style="width: 100%;" id="formdata" enctype="multipart/form-data">
+
+                                <div class="row">
+
+                                    <div class="col-12">
+
+                                        <div class="ml-auto">
+
+                                            <h3>1. Basic Info</h3>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group col-6">
+
+                                        <label class="col-form-label">Course Title</label>
+
+                                        <div>
+
+                                            <input class="form-control" id="cname" type="text" value="" name="cname" required>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group col-6">
+
+                                        <label class="col-form-label">Price</label>
+
+                                        <div>
+
+                                            <input class="form-control" id="cprice" type="number" value=""
+                                                name="cprice" required>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group col-12">
+
+                                        <label class="col-form-label">Instructor (Email)</label>
+
+                                        <div>
+
+                                            <input class="form-control" style="margin-left: 0;" type="email" id="teacher_name"
+                                                name="teacher_name" required>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="seperator"></div>
+
+                                    <div class="col-12 m-t20">
+
+                                        <div class="ml-auto m-b5">
+
+                                            <h3>2. Course Details</h3>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group col-12">
+
+                                        <label class="col-form-label">Pre-Requisites</label>
+
+                                        <div>
+
+                                            <input class="form-control" type="text" id="cpreq" name="cpreq" required>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group col-12">
+
+                                        <label class="col-form-label">Course Description</label>
+
+                                        <div>
+
+                                            <input class="form-control" type="text" id="cdes" name="cdes" required>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group col-12">
+
+                                        <label class="col-form-label">Category</label>
+
+                                        <div>
+
+                                            <input class="form-control" type="text" id="typ" name="typ" required>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-12 m-t20">
+
+                                        <div class="ml-auto">
+
+                                            <h3 class="m-form__section">3. Add Item</h3>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-12">
+
+                                        <table id="item-add" style="width:100%;">
+
+                                            <tr class="list-item">
+
+                                                <td>
+
+                                                    <div class="row">
+
+                                                        <div class="col-md-3">
+
+                                                            <label class="col-form-label">Module Name</label>
+
+                                                            <div>
+
+                                                                <input name="mname" class="form-control mname"
+                                                                    type="text" value="" id="mname" name="mname">
+
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="col-md-3">
+
+                                                            <label class="col-form-label">Video Lecture</label>
+
+                                                            <div>
+
+                                                                <input name="mvid" class="form-control mvid" type="file"
+                                                                    value="" id="mvid" name="mvid">
+
+                                                            </div>
+
+                                                        </div>
+
+
+
+                                                        <div class="col-md-2">
+
+                                                            <label class="col-form-label">Close</label>
+
+                                                            <div class="form-group">
+
+                                                                <a class="delete" href="#"><i
+                                                                        class="fa fa-close"></i></a>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </td>
+
+                                            </tr>
+
+                                        </table>
+
+                                    </div>
+
+                                    <div class="col-12">
+
+                                        <button type="button" class="btn-secondry add-item m-r5"><i
+                                                class="fa fa-fw fa-plus-circle"></i>Add
+
+                                            Item</button>
+
+
+
+                                    </div>
+
+                                </div>
+
+                                <div class="col-12 m-t20">
+
+                                    <div class="ml-0">
+
+                                        <h3 class="m-form__section">4. Add a test</h3>
+
+                                    </div>
+
+                                </div>
+                                <div class="container">
+
+                                    <label for="test-name">Test Name:</label>
+                                    <input type="text" id="test-name" name="testName" class="form-control w-100" >
+
+                                    <label for="test-description">Test Description:</label>
+                                    <input type="text" id="test-description" name="testDescription" class = "form-control w-100" >
+
+                                    <div id="questions-container" class="m-3"></div>
+
+                                    <button id="add-question-btn" type="button" class="btn-secondry m-r5"><i
+                                            class="fa fa-fw fa-plus-circle"></i>Add Question</button>
+
+
+                                </div>
+
+
+                                <div style="display: grid; justify-content: center; ">
+                                    <button type="submit" class="btn m-3 p-3 float-center justify-content-between" id="sbmt" onclick="uploadt()">Add
+                                        course</button>
+                                </div>
+                                
+                            </form>
+
+
+
+
+                       
+
+							<form class="edit-profile m-b30" id="formdata1" enctype="multipart/form-data">
+
+								<div class="row">
+
+									<div class="col-12">
+
+										<div class="ml-auto">
+
+											<h3>4. Want to upload important documents</h3>
+
+										</div>
+
+									</div>
+
+									<div class="form-group col-6">
+
+										<label class="col-form-label">Enter Course Name</label>
+
+										<div>
+
+											<input class="form-control" id="coname" type="text" value="" name="coname">
+
+										</div>
+
+									</div>
+
+									<div class="form-group col-6">
+
+										<label class="col-form-label">Upload here</label>
+
+										<div>
+
+											<input class="form-control" id="ifile" type="file" value="" name="ifile" multiple>
+
+										</div>
+
+									</div>
+
+									<div class="form-group col-12">
+
+										<h3>Want to backup the above files to google drive</h3>
+
+										<label class="col-form-label">Create the public folder and enter the ID, else
+											ignore the below text field</label>
+
+										<div>
+
+											<input class="form-control" id="drive" type="text" value="" name="name">
+
+										</div>
+
+									</div>
+
+									<div class="col-12">
+
+										<button type="submit" class="btn" id="sbmt" onclick="uploadf()">Add
+											Document</button>
+
+									</div>
+
+								</div>
+
+							</form>
+
+						</div>
+                        
+
+                    </div>
+
+                    
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <div class="ttr-overlay">
+
+    </div>
+
+    <script>
+
+        document.getElementById("teacher_name").value = JSON.parse(sessionStorage.getItem("email")).email;
+
+    </script>
+
+    <script src="../js/jquery.min.js"></script>
+
+    <script src="../vendors/bootstrap/js/popper.min.js"></script>
+
+    <script src="../vendors/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="../vendors/bootstrap-select/bootstrap-select.min.js"></script>
+
+    <script src="../vendors/bootstrap-touchspin/jquery.bootstrap-touchspin.js"></script>
+
+    <script src="../vendors/magnific-popup/magnific-popup.js"></script>
+
+    <script src="../vendors/counter/waypoints-min.js"></script>
+
+    <script src="../vendors/counter/counterup.min.js"></script>
+
+    <script src="../vendors/imagesloaded/imagesloaded.js"></script>
+
+    <script src="../vendors/masonry/masonry.js"></script>
+
+    <script src="../vendors/masonry/filter.js"></script>
+
+    <script src="../vendors/owl-carousel/owl.carousel.js"></script>
+
+    <script src='../vendors/scroll/scrollbar.min.js'></script>
+
+    <script src="../js/functions.js"></script>
+
+    <script src="../vendors/chart/chart.min.js"></script>
+
+    <script src="../js/admin.js"></script>
+
+    <script>
+
+        // Pricing add
+
+        function newMenuItem() {
+
+            var newElem = $('tr.list-item').first().clone();
+
+            newElem.find('input').val('');
+
+            newElem.appendTo('table#item-add');
+
+        }
+
+        if ($("table#item-add").is('*')) {
+
+            $('.add-item').on('click', function (e) {
+
+                e.preventDefault();
+
+                newMenuItem();
+
+            });
+
+            $(document).on("click", "#item-add .delete", function (e) {
+
+                e.preventDefault();
+
+                $(this).parent().parent().parent().parent().remove();
+
+            });
+
+        }
+
+    </script>
+
+    <script>
+
+        $(document).ready(() => {
+
+            $("#formdata").submit(function () {
+
+                var data = new FormData($("#formdata")[0])
+
+                console.log(data);
+
+                $.ajax({
+
+                    url: "http://localhost:3470/upload-files-t",
+
+                    type: "POST",
+
+                    contentType: false,
+
+                    processData: false,
+
+                    enctype: "multipart/form-data",
+
+                    cache: false,
+
+                    data: data,
+
+                    success: (data) => {
+
+                        console.log("hello")
+                        alert("Course Added")
+
+                    }
+
+                })
+
+            })
+
+        })
+
+    </script>
+    <script>
+        const addQuestionBtn = document.getElementById("add-question-btn");
+        const questionsContainer = document.getElementById("questions-container");
+
+        let questionCount = 0;
+
+        addQuestionBtn.addEventListener("click", () => {
+            questionCount++;
+
+            const questionDiv = document.createElement("div");
+            questionDiv.classList.add("question");
+
+            const questionLabel = document.createElement("label");
+            questionLabel.setAttribute("for", "question-" + questionCount);
+            questionLabel.textContent = "Question " + questionCount + ":";
+
+            const questionInput = document.createElement("input");
+            questionInput.className = "form-control"
+            questionInput.setAttribute("type", "text");
+            questionInput.setAttribute("id", "question-" + questionCount);
+            questionInput.setAttribute("name", "question-" + questionCount);
+            questionInput.setAttribute("required", "");
+
+            const optionsDiv = document.createElement("div");
+            optionsDiv.classList.add("options");
+            optionsDiv.style = "display : grid"
+
+            for (let i = 1; i <= 4; i++) {
+                const optionDiv = document.createElement("div");
+                optionDiv.classList.add("option","p-1","m-1");
+
+                const optionLabel = document.createElement("label");
+                optionLabel.setAttribute("for", "question-" + questionCount + "-option-" + i);
+                optionLabel.textContent = "Option " + i + ":";
+
+                const optionInput = document.createElement("input");
+                optionInput.className = "form-control p-1 m-1"
+                optionInput.className = "w-25"
+                optionInput.setAttribute("type", "text");
+                optionInput.setAttribute("id", "question-" + questionCount + "-option-" + i);
+                optionInput.setAttribute("name", "question-" + questionCount + "-option-" + i);
+                optionInput.setAttribute("required", "");
+
+                const correctOptionInput = document.createElement("input");
+                correctOptionInput.classList.add("w-5","ml-2")
+                correctOptionInput.setAttribute("type", "radio");
+                correctOptionInput.setAttribute("id", "question-" + questionCount + "-correct-option-" + i);
+                correctOptionInput.setAttribute("name", "question-" + questionCount + "-correct-option");
+                correctOptionInput.setAttribute("value", i);
+                correctOptionInput.setAttribute("required", "");
+
+                const correctOptionLabel = document.createElement("label");
+                correctOptionLabel.setAttribute("for", "question-" + questionCount + "-correct-option-" + i);
+                correctOptionLabel.className="ml-2"
+                correctOptionLabel.textContent = "Correct?";
+
+                optionDiv.appendChild(optionLabel);
+                optionDiv.appendChild(optionInput);
+                optionDiv.appendChild(correctOptionInput);
+                optionDiv.appendChild(correctOptionLabel);
+                optionsDiv.appendChild(optionDiv);
+            }
+
+            questionDiv.appendChild(questionLabel);
+            questionDiv.appendChild(questionInput);
+            questionDiv.appendChild(optionsDiv);
+
+            questionsContainer.appendChild(questionDiv);
+        });
+    </script>
+    <script>
+        const form = document.getElementById("formdata");
+        const courseNameInput = document.getElementById("cname");
+        const coursePriceInput = document.getElementById("cprice");
+        const teacherNameInput = document.getElementById("teacher_name");
+        const courseReqInput = document.getElementById("cpreq");
+        const courseDescInput = document.getElementById("cdes");
+        const courseTypeInput = document.getElementById("typ");
+        const itemNameInputs = document.querySelectorAll(".mname");
+      
+        form.addEventListener("submit", (event) => {
+          // Validate course name input
+          if (courseNameInput.value === "") {
+            event.preventDefault();
+            alert("Please enter a course name.");
+            return;
+          }
+      
+          // Validate course price input
+          if (coursePriceInput.value === "") {
+            event.preventDefault();
+            alert("Please enter a course price.");
+            return;
+          }
+      
+          // Validate teacher name input
+          if (teacherNameInput.value === "") {
+            event.preventDefault();
+            alert("Please enter a teacher email.");
+            return;
+          }
+      
+          // Validate course prerequisites input
+          if (courseReqInput.value === "") {
+            event.preventDefault();
+            alert("Please enter course prerequisites.");
+            return;
+          }
+      
+          // Validate course description input
+          if (courseDescInput.value === "") {
+            event.preventDefault();
+            alert("Please enter course description.");
+            return;
+          }
+      
+          // Validate course type input
+          if (courseTypeInput.value === "") {
+            event.preventDefault();
+            alert("Please enter a course category.");
+            return;
+          }
+      
+          // Validate item name inputs
+          for (let i = 0; i < itemNameInputs.length; i++) {
+            if (itemNameInputs[i].value === "") {
+              event.preventDefault();
+              alert("Please enter module name.");
+              return;
+            }
+          }
+        });
+      </script>
+      
+
+<script>
+
+    $(document).ready(() => {
+
+        $("#formdata1").submit(function () {
+
+            var data = new FormData($("#formdata1")[0])
+
+            $.ajax({
+
+                url: "http://localhost:3470/tupload-files-imp",
+
+                type: "POST",
+
+                contentType: false,
+
+                processData: false,
+
+                enctype: "multipart/form-data",
+
+                cache: false,
+
+                data: data,
+
+                success: (data) => {
+
+                    console.log("hello")
+                    alert("Docs Uploadde")
+
+                }
+
+            })
+
+            $.ajax({
+
+                url: "http://localhost:3470/tupload-files-imp2",
+
+                type: "POST",
+
+                contentType: false,
+
+                processData: false,
+
+                enctype: "multipart/form-data",
+
+                cache: false,
+
+                data: data,
+
+                success: (data) => {
+
+                    console.log("hello")
+                    alert("Docs Uploaded")
+
+                }
+
+            })
+        });
+
+    })
+
+</script>
+
+</body>
+
+</html>

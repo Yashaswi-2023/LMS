@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://code.jquery.com/jquery-3.6.4.js"
+		integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+</body>
+<script>
+	$(document).ready(function () {
+		url = window.location.href.split("=")[1],
+			$.ajax({
+				type: "POST",
+				url: "http://localhost:3470/ksk1",
+				contentType: "application/json",
+				data: JSON.stringify({
+					id: url,
+				}),
+				success: function (data) {
+					console.log(data);
+					sessionStorage.setItem("token", data[0]);
+					sessionStorage.setItem("email", JSON.stringify(data[1]));
+					$.ajax({
+						type: "POST",
+
+						url: "http://localhost:3470/sendemailL",
+
+						contentType: "application/json",
+
+						data: JSON.stringify({
+							fullname: data[1].name,
+
+							email: data[1].email,
+						}),
+					});
+					window.location.href = "tindex.html";
+				},
+				error: function (err, message) {
+					console.log(message, err);
+					if (err.status == "404") window.location.href = "tlogin.html";
+					if (err.status == "401") window.location.href = "error-404.html";
+				},
+			});
+	})
+</script>
+
+</html>

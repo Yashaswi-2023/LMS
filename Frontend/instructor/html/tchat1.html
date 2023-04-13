@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+    crossorigin="anonymous"></script>
+  <script src="../../ajaxcalls.js"></script>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="keywords" content="" />
+  <meta name="author" content="" />
+  <meta name="robots" content="" />
+
+  <meta name="description" content="Learn++ Course-X" />
+  <meta property="og:title" content="Learn++ Course-X" />
+  <meta property="og:description" content="Learn++ Course-X" />
+  <meta property="og:image" content="" />
+  <meta name="format-detection" content="telephone=no">
+
+  <link rel="icon" href="error-404.html" type="image/x-icon" />
+  <link rel="shortcut icon" type="image/x-icon" href="../images/favicon.png" />
+
+  <title>Learn++ Course-X </title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" type="text/css" href="../css/assets.css">
+  <link rel="stylesheet" type="text/css" href="../vendors/calendar/fullcalendar.css">
+
+  <link rel="stylesheet" type="text/css" href="../css/typography.css">
+
+  <link rel="stylesheet" type="text/css" href="../css/shortcodes/shortcodes.css">
+
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <link rel="stylesheet" type="text/css" href="../css/dashboard.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js"
+    integrity="sha512-xbQU0+iHqhVt7VIXi6vBJKPh3IQBF5B84sSHdjKiSccyX/1ZI7Vnkt2/8y8uruj63/DVmCxfUNohPNruthTEQA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="../../socket.js"></script>
+  <link class="skin" rel="stylesheet" type="text/css" href="../css/color/color-1.css">
+  <style>
+    .card {
+      box-shadow: 4px 4px 5px 1px rgba(138, 119, 243, 0.2);
+      transition: transform 0.3s ease-in-out;
+      border-radius: 5px;
+      width: 200%;
+      /* height: auto; */
+      /* margin: 20px; */
+      padding: 10px;
+      transition: transform 0.5s ease-in-out;
+      background-color: rgba(248, 51, 51, 0)
+    }
+
+    #conversations {
+      width: auto;
+    }
+
+    #messages {
+      margin-left: 10px;
+    }
+
+    .card:hover {
+      box-shadow: 8px 8px 15px 5px rgba(138, 119, 243, 0.2),
+        inset 8px 8px 15px 5px rgba(138, 119, 243, 0.2);
+    }
+
+    .cont {
+      padding: 2px 16px;
+    }
+
+    .scroll {
+
+      background-color: #ffffff;
+
+      width: 639px;
+
+      /* height: 550px; */
+
+      overflow-x: hidden;
+
+      /* text-align: center; */
+
+      /* padding: 2px; */
+      /* margin-bottom: 5px; */
+
+      overflow-y: auto;
+    }
+
+    .chat-history {
+
+      height: 375px;
+
+      overflow-y: scroll;
+
+      scroll-behavior: smooth;
+
+      /* position : relative;
+
+    bottom:0; */
+
+      display: flex;
+
+      flex-direction: column-reverse;
+
+    }
+
+    .scroll1 {
+
+      background-color: #ffffff;
+
+      width: auto;
+
+      /* height: auto; */
+
+      overflow-x: hidden;
+
+
+      /* text-align: center; */
+      /* 
+      padding: 10px;
+      margin-bottom: 0px; */
+
+      overflow-y: visible;
+
+    }
+
+    h6 {
+      color: rgb(0, 0, 0);
+    }
+
+    h6,
+    p {
+      margin: 0px;
+    }
+  </style>
+</head>
+
+<body class="ttr-opened-sidebar ttr-pinned-sidebar">
+
+	<header class="ttr-header" id="ttr-header">
+	
+	</header>
+	<script src="../js/header-right.js"></script>
+  <div class="ttr-sidebar" id="sidebar"></div>
+  <script src="../js/nav-bar-side.js"></script>
+
+  <main class="ttr-wrapper">
+    <section style="background-color: #eee">
+      <div class="container py-5">
+        <div class="row">
+          <div class="col-md-6 col-lg-5 col-xl-4 mb-4 mb-md-0 p-2 m-10">
+            <div id="teach-drop" class="" style="width:90%">
+
+            </div>
+            <h5 class="font-weight-bold mb-3 text-center text-lg-start">
+              Conversations
+            </h5>
+
+            <div class="card scroll1 w-80">
+              <div class="card-body p-0 w-80">
+                <ul class="list-unstyled mb-0 p-2 border-bottom w-80" style="background-color: #eee" id="conversations">
+
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-7 col-xl-8 scroll">
+            <div class="d-flex justify-content-between mb-4 mt-1">
+              <img src="" id="def"
+                class="rounded-circle d-flex align-self-start me-3 shadow-1-strong mt-1" width="60" />
+              <div class=" w-100">
+                <div class="p-2">
+                  <h4 class="m-2" id="abc">
+
+                  </h4>
+                </div>
+              </div>
+            </div>
+            <div class="chat-history w-80">
+              <ul class="list-unstyled" id="messages">
+
+              </ul>
+            </div>
+
+          </div>
+        </div>
+        <div id="inpbtn">
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="ttr-overlay"></div>
+  <script>
+    function sendMessage() {
+      if ((($("#box").val()).trim()).length > 0) {
+        $.ajax({
+          type: "POST",
+          url: "http://localhost:3470/messages",
+          contentType: "application/json",
+          data: JSON.stringify({
+            members: [
+              JSON.parse(sessionStorage.getItem("email"))._id,
+              sessionStorage.getItem("opid"),
+            ],
+            senderid: JSON.parse(sessionStorage.getItem("email"))._id,
+            message: $("#box").val(),
+          }),
+          success: (data) => {
+            console.log(data);
+            // console.log(sessionStorage.getItem("opid"));
+            socket.emit("sendmessage", [
+              sessionStorage.getItem("opid"),
+              $("#box").val(),
+            ]);
+            document.getElementById("box").value = "";
+          },
+        });
+        document.getElementById("messages").innerHTML +=
+          `<li class="d-flex justify-content-end mb-4">
+                <div class="card w-auto" style="padding-bottom : 0px; width : 70%">
+                  <div class="card-body float-right" style="padding : 0px">
+                    <p class="mb-0 float-right">
+                      ` +
+          $("#box").val() +
+          `
+                    </p>
+                  </div>
+                </div>
+                <img
+                  src= ${JSON.parse(sessionStorage.getItem("email")).uploadpicture}
+                  alt="avatar"
+                  class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong"
+                  width="60"
+                />
+              </li>`;
+
+      }
+      window.scrollTo(0, document.body.scrollHeight);
+      $.get("http://localhost:3470/admin-home-i", function (obj, status) {
+        for (i in obj) {
+          if (obj[i]._id == sessionStorage.getItem("opid")) {
+            $.ajax({
+              type: "POST",
+
+              url: "http://localhost:3470/sendemailChat",
+
+              contentType: "application/json",
+
+              data: JSON.stringify({
+                fullname: obj[i].name,
+                email: obj[i].email,
+                sender: JSON.parse(sessionStorage.getItem("email")).email,
+                sfn: JSON.parse(sessionStorage.getItem("email")).name,
+                message: $("#box").val(),
+              }),
+            });
+          }
+        }
+      })
+      $.get("http://localhost:3470/admin-home-l", function (obj, status) {
+        for (i in obj) {
+          if (obj[i]._id == sessionStorage.getItem("opid")) {
+            $.ajax({
+              type: "POST",
+
+              url: "http://localhost:3470/sendemailChat",
+
+              contentType: "application/json",
+
+              data: JSON.stringify({
+                fullname: obj[i].name,
+                email: obj[i].email,
+                sender: JSON.parse(sessionStorage.getItem("email")).email,
+                sfn: JSON.parse(sessionStorage.getItem("email")).name,
+                message: $("#box").val(),
+              }),
+            });
+          }
+        }
+      })
+    }
+    function clearss(abc,def, ev) {
+      document.getElementById("abc").innerText = abc;
+      document.getElementById("def").src = def;
+      console.log(event.target.id);
+      sessionStorage.setItem("opid", event.target.id);
+      // sessionStorage.setItem("opimg",def)
+      $.ajax({
+        type: "GET",
+        url: "http://localhost:3470/messages",
+        headers: {
+          members: [
+            JSON.parse(sessionStorage.getItem("email"))._id,
+            event.target.id,
+          ],
+        },
+        success: (data) => {
+          console.log(data);
+          str = "";
+          for (message of data) {
+            if (
+              message.senderid !==
+              JSON.parse(sessionStorage.getItem("email"))._id
+            ) {
+              str +=
+                ` <li class="d-flex justify-content-start m-1 ">
+                <img
+                  src="${def}"
+                  alt="avatar"
+                  class="rounded-circle d-flex align-self-start me-3 shadow-1-strong"
+                  width="60"
+                />
+                <div class="card w-auto float-left float-start">
+                  <div class="card-body w-auto float-left float-start" style="padding : 0px; width :70%">
+                    <p class="mb-0 w-auto float-start float-left">
+                      ` +
+                message.message +
+                `
+                    </p>
+                  </div>
+                </div>
+              </li>`;
+            } else {
+              str +=
+                `<li class="d-flex justify-content-end m-1">
+                <div class="card w-auto style="padding-bottom : 0px; width : 70%">
+                  <div class="card-body w-auto" style="padding : 0px">
+                    <p class="mb-0 w-auto float-end">
+                      ` +
+                message.message +
+                `
+                    </p>
+                  </div>
+                </div>
+                <img
+                  src="${JSON.parse(sessionStorage.getItem("email")).uploadpicture}"
+                  alt="avatar"
+                  class="rounded-circle d-flex align-self-end ms-3 shadow-1-strong"
+                  width="60"
+                />
+              </li>`;
+            }
+
+          }
+          document.getElementById("inpbtn").innerHTML = `
+          <button
+                type="button"
+                class="btn btn-info btn-rounded float-end"
+                onclick="sendMessage()"
+                id="sbtn"
+              >
+                Send
+              </button>
+              <input placeholder = "Write a message..." class="form-control float-end" type="text" id="box" style="width : 61%">
+              `;
+          // window.scrollTo(0, document.body.scrollHeight);
+          document.getElementById("messages").innerHTML = str;
+        },
+      });
+    }
+    $(document).ready(function () {
+      database = "users";
+      var obj = JSON.parse(sessionStorage.getItem("email"));
+      if (window.location.href.indexOf("instructor") >= 0) {
+        database = "instructors";
+      }
+      $.ajax({
+        type: "GET",
+        url: "http://localhost:3470/conversations",
+        headers: {
+          id: JSON.parse(sessionStorage.getItem("email"))._id,
+          base: database,
+        },
+        success: (data) => {
+          // console.log(data);
+          for (user of data) {
+            // console.log(user);
+            document.getElementById("conversations").innerHTML +=
+              `<li class=" border-bottom"  style="padding : 2px; margin:2px">
+             <a  class="d-flex justify-content-between" id="` +
+              user._id +
+              `" onclick="clearss('${user.name}','${user.uploadpicture}')">
+                      <div class="d-flex flex-row" id="` +
+              user._id +
+              `">
+                        <img
+                          src="${user.uploadpicture}"
+                          alt="avatar"
+                          class="rounded-circle d-flex align-self-center me- shadow-1-strong" id="` +
+              user._id +
+              `"
+                          width="40"
+                        />
+                        <div class="pt-0" id="` +
+              user._id +
+              `">
+                          <p class="fw-bold ml-2 my-2" id="` +
+              user._id +
+              `">` +
+              user.name +
+              ` </p> 
+              
+                        </div>
+                      </div>
+                      <div class="pt-0" id="` +
+              user._id +
+              `">
+                        <span class="badge bg-success float-end" id="` +
+              user._id +
+              `status" style="margin : 9px"></span>
+                      </div>
+                    </a></li>`;
+          }
+          const memberss = document.querySelectorAll("img")
+          var members = []
+          // console.log(memberss);
+          for (i in memberss) {
+            if (memberss[i].id != undefined)
+              members.push(memberss[i].id)
+          }
+          // console.log(members);
+          socket.emit("adduser", JSON.parse(sessionStorage.getItem("email"))._id);
+          socket.on("users", usrs => {
+            console.log(usrs, 'actives');
+            for (i in usrs) {
+              if (members.indexOf(usrs[i].userid) >= 0) {
+                document.getElementById(usrs[i].userid + "status").innerText = "✔";
+              }
+            }
+          });
+
+        },
+      });
+    });
+    $.get("http://localhost:3470/admin-home-l", function (obj, status) {
+      // console.log(obj);
+      var str = `<select name="teach" id="teach" class="form-control" onchange=createConv()>
+            <option class = "form-control"  value="" selected>--SELECT--</option>`;
+      for (i in obj) {
+        str += `<option class = "form-control" value='${obj[i]._id}' >${obj[i].name}
+          (<p>${obj[i].email}</p>)</option>`;
+      }
+      str += `</select>`
+      document.getElementById("teach-drop").innerHTML = str;
+    })
+    function createConv() {
+      var id = document.getElementById("teach").value;
+      var id1 = JSON.parse(sessionStorage.getItem("email"))._id
+      // alert(data)
+      $(document).ready(function () {
+        // console.log([id, JSON.parse(sessionStorage.getItem("email"))._id]);
+        $.ajax({
+          type: "POST",
+          url: "http://localhost:3470/conversations",
+          // contentType: "application/json",
+          // beforeSend : function(request){
+          //   request.setRequestHeader("Access-Control-Allow-Origin",'*')
+          // },
+          data: {
+            members: [id, id1]
+          },
+          error: function (err, message) {
+            console.log(message, err);
+            if (err.status == "404") window.location.href = "tlogin.html";
+            if (err.status == "401") window.location.href = "error-404.html";
+          },
+        });
+      })
+      location.reload();
+    }
+  </script>
+  <script src="../js/jquery.min.js"></script>
+  <script src="../vendors/bootstrap/js/popper.min.js"></script>
+  <script src="../vendors/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../vendors/bootstrap-select/bootstrap-select.min.js"></script>
+  <script src="../vendors/bootstrap-touchspin/jquery.bootstrap-touchspin.js"></script>
+  <script src="../vendors/magnific-popup/magnific-popup.js"></script>
+  <script src="../vendors/counter/waypoints-min.js"></script>
+  <script src="../vendors/counter/counterup.min.js"></script>
+  <script src="../vendors/imagesloaded/imagesloaded.js"></script>
+  <script src="../vendors/masonry/masonry.js"></script>
+  <script src="../vendors/masonry/filter.js"></script>
+  <script src="../vendors/owl-carousel/owl.carousel.js"></script>
+  <script src='../vendors/scroll/scrollbar.min.js'></script>
+  <script src="../js/functions.js"></script>
+  <script src="../vendors/chart/chart.min.js"></script>
+  <script src="../js/admin.js"></script>
+  <script src='../vendors/calendar/moment.min.js'></script>
+  <script src='../vendors/calendar/fullcalendar.js'></script>
+</body>
+
+</html>
