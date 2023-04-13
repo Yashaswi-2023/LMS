@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head id="Head">
+	<script src="https://code.jquery.com/jquery-3.6.4.js"
+		integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<script src="../../ajaxcalls.js"></script>
+	<style>
+		.round {
+			position: relative;
+		}
+
+		.round label {
+			background-color: #fff;
+			border: 1px solid #ccc;
+			border-radius: 50%;
+			cursor: pointer;
+			height: 28px;
+			left: 0;
+			position: absolute;
+			top: 0;
+			width: 28px;
+		}
+
+		.round label:after {
+			border: 2px solid #fff;
+			border-top: none;
+			border-right: none;
+			content: "";
+			height: 6px;
+			left: 7px;
+			opacity: 0;
+			position: absolute;
+			top: 8px;
+			transform: rotate(-45deg);
+			width: 12px;
+		}
+
+		.round input[type="checkbox"] {
+			visibility: hidden;
+		}
+
+		.round input[type="checkbox"]:checked+label {
+			background-color: #66bb6a;
+			border-color: #66bb6a;
+		}
+
+		.round input[type="checkbox"]:checked+label:after {
+			opacity: 1;
+		}
+
+		/* general styling */
+
+
+
+
+
+		.container {
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<script src="../js/head.js"></script>
+
+<body id="bg">
+	<div class="modal fade review-bx-reply" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog w-100 h-100" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<input type="text" style="font-weight: bold;" id="titlenotes"/>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<textarea class="form-control" placeholder="Type Notes..."></textarea>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn mr-auto" onclick="savenotes()">Save</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="page-wraper">
+		<div id="loading-icon-bx"></div>
+		<div id="Header" class="fixed"></div>
+		<script src="../js/header.js"></script>
+
+		<div class="page-content bg-white">
+
+			<div class="page-banner ovbl-dark" style="background-image:url(../images/banner/banner2.jpg);">
+				<div class="container">
+					<div class="page-banner-entry">
+						<h1 class="text-white">Courses Details</h1>
+					</div>
+				</div>
+			</div>
+
+			<div class="breadcrumb-row">
+				<div class="container">
+					<ul class="list-inline">
+						<li><a href="#">Home</a></li>
+						<li>Courses Details</li>
+					</ul>
+				</div>
+			</div>
+
+
+			<div class="content-block">
+				<div class="container" id="prgs">
+
+				</div>
+				<div class="section-area section-sp1">
+					<div class="container" id="crs-det">
+
+					</div>
+					<div class="m-b30 container">
+						<h4>Curriculum</h4>
+						<ul class="curriculum-list">
+							<li>
+								<ul id="curriculum">
+
+								</ul>
+							</li>
+						</ul>
+						<div class="m-b30 container" id="impfiles">
+
+							<h3 id="headingrefs">Reference Documents</h3>
+					
+					
+					
+						 </div>
+						<div class="m-b30 container" id="assesmentest">
+
+
+						</div>
+
+						<div class="m-b30 container" id="submitreviews">
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="Footer">
+		</div>
+		<script>
+
+			$.ajax({
+		 
+			 type: "GET",
+		 
+			 url: "http://localhost:3470/getCourse",
+		 
+			 contentType: "application/json",
+		 
+			 headers: {
+		 
+			 corid: sessionStorage.getItem("id-crs")
+		 
+			 },
+		 
+			 success: (data) => {
+		 
+			 console.log(data);
+		 
+			 if(data.important_files.length == 0){
+		 
+				document.getElementById("headingrefs").style = "display : none";
+		 
+			 }
+		 
+			 for (i in data.important_files) {
+		 
+				for (j in data.important_files[i]) {
+		 
+				document.getElementById("impfiles").innerHTML += `
+		 
+				 
+		 
+							 <div class="curriculum-list-box card" style="display : grid, justify-content: center; border-radius : 30px; padding : 10px; background-color : #d5d5d5">
+		 
+								
+		 
+								 <span> <a target = "_blank" href=${data.important_files[i][j]
+		 
+				 } style="font-size:24px;">&nbsp; <b style= "text-transform: uppercase;font-size:24px;">Document - ${parseInt(i) + parseInt(j) + 1} </b></a></span>
+		 
+								 </div>
+		 
+									
+		 
+							
+		 
+							<br>
+		 
+				`
+		 
+				}
+		 
+			 }
+		 
+			 }
+		 
+			})
+		 
+			</script>
+		<script src="../js/footer.js"></script>
+		<button class="back-to-top fa fa-chevron-up"></button>
+	</div>
+	<button class="back-to-top fa fa-chevron-up"></button>
+	</div>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../vendors/bootstrap/js/popper.min.js"></script>
+	<script src="../vendors/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../vendors/bootstrap-select/bootstrap-select.min.js"></script>
+	<script src="../vendors/bootstrap-touchspin/jquery.bootstrap-touchspin.js"></script>
+	<script src="../vendors/magnific-popup/magnific-popup.js"></script>
+	<script src="../vendors/counter/waypoints-min.js"></script>
+	<script src="../vendors/counter/counterup.min.js"></script>
+	<script src="../vendors/imagesloaded/imagesloaded.js"></script>
+	<script src="../vendors/masonry/masonry.js"></script>
+	<script src="../vendors/masonry/filter.js"></script>
+	<script src="../vendors/owl-carousel/owl.carousel.js"></script>
+	<script src="../js/jquery.scroller.js"></script>
+	<script src="../js/functions.js"></script>
+	<script src="../js/contact.js"></script>
+</body>
+
+</html>
